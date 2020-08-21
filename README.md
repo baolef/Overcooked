@@ -1,5 +1,5 @@
 # Overcooked
-This is a demo for the Overcooked developed by Fang Baole and Cui Jiaoming using Lua and Love2D.
+This is a demo for the Overcooked developed by Fang Baole using Lua and Love2D.
 
 The game enables different players (clients) to play simplified Overcooked once connected to the server. The server should be opened first by clicking [start_demo_server.bat](https://gitlab.corp.sdo.com/demo-for-overcooked/demo/-/blob/master/start_demo_server.bat).
 
