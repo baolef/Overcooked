@@ -1,0 +1,140 @@
+syntax = "proto3";
+package client;
+
+enum ProtoDefault {
+    client_reserved         = 0;
+    client_CMserver_address = 1;
+    client_SMserver_address = 2;
+    client_SM_ready         = 3;
+    client_CM_register      = 4;
+    client_SM_register      = 5;
+    client_CM_authen        = 6;
+    client_SM_authen        = 7;
+    client_CM_team_list     = 8;
+    client_SM_team_list     = 9;
+    client_CM_join_team     = 10;
+    client_SM_join_team     = 11;
+    client_CM_leave_team    = 12;
+    client_SM_leave_team    = 13;
+    client_SM_team_members  = 14;
+    client_CM_say           = 15;
+    client_SM_say           = 16;
+}
+
+message CMserver_address {
+    int32 gameid = 1;
+}
+
+message SMserver_address {
+    bool success = 1;
+    string address= 2;
+    int32 port = 3;
+}
+
+// test message
+message reserved{
+    string text = 1;
+}
+
+// first message
+message SM_ready {
+}
+
+// 本地认证注册
+message CM_register{
+    string username = 1;
+    string passwd = 2;
+    string phone = 3;   //  手机型号
+}
+
+message SM_register{ // 本地注册
+    bool success = 1;
+    int32 err_code = 2;
+}
+
+message CM_authen{
+    string channel = 1; // APP包名
+    string open_id = 2;
+    string channel_token = 3;
+}
+
+message SM_authen{
+    bool success = 1;
+    int32 err_code = 2;
+    string account_id = 3;
+    string game_token = 4;
+}
+
+message CM_arealist{
+    string account_id = 1;
+    string game_token = 2;
+}
+
+message SM_arealist{
+    message role_info{
+        int32 id = 1;
+        string data = 2;
+    }
+    message area_info{
+        int32 area_id = 1;
+        string area_name = 2;
+        bool is_recommend  = 3;
+        bool is_new = 4;
+        repeated role_info roles = 5;
+    }
+    repeated area_info areas = 1;
+    int32 last_selected = 2; // 上次选择的area_id
+}
+
+message CM_select_area{
+    int32 area_id = 1;
+}
+
+message SM_select_area{
+    string address = 1;
+    int32 port = 2;
+}
+
+// 获取队伍列表
+message CM_team_list{
+
+}
+// 队伍列表
+message SM_team_list{
+    repeated int32 team_ids = 1;
+}
+
+// 加入队列
+message CM_join_team{
+    int32 team_id = 1;
+}
+// 加入队列返回
+message SM_join_team{
+    bool success = 1;
+    int32 team_id = 2;
+}
+message CM_leave_team{
+
+}
+
+message SM_leave_team{
+    bool success = 1;
+    int32 team_id = 2;
+}
+
+// 队伍成员列表
+message SM_team_members{
+    repeated int64 user_ids = 1;
+}
+
+//  说话
+message CM_say{
+    int32 channel   = 1;
+    string msg      = 2;
+}
+
+message SM_say{
+    string  user_id = 1;
+    int32   channel = 2;
+    string  msg     = 3;
+}
