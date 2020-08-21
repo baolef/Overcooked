@@ -17,4 +17,4 @@ Keyboard command:
 - Operate (cut or cook): lart
 - Move (up, down, left, right): up, down, left, right
 
-If you have encountered any problems, feel free to contact Fang Baole by fangbaole.mike@shengqugames.com or fbl718@sjtu.edu.cn.
+If you have encountered any problems, feel free to contact Fang Baole by fbl718@sjtu.edu.cn.
